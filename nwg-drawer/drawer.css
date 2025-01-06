@@ -1,0 +1,88 @@
+@define-color rosewater #f5e0dc;
+@define-color flamingo #f2cdcd;
+@define-color pink #f5c2e7;
+@define-color mauve #cba6f7;
+@define-color red #f38ba8;
+@define-color maroon #eba0ac;
+@define-color peach #fab387;
+@define-color yellow #f9e2af;
+@define-color green #a6e3a1;
+@define-color teal #94e2d5;
+@define-color sky #89dceb;
+@define-color sapphire #74c7ec;
+@define-color blue #89b4fa;
+@define-color lavender #b4befe;
+@define-color text #cdd6f4;
+@define-color subtext1 #bac2de;
+@define-color subtext0 #a6adc8;
+@define-color overlay2 #9399b2;
+@define-color overlay1 #7f849c;
+@define-color overlay0 #6c7086;
+@define-color surface2 #585b70;
+@define-color surface1 #45475a;
+@define-color surface0 #313244;
+@define-color base #1e1e2e;
+@define-color mantle #181825;
+@define-color crust #11111b;
+
+window {
+    background-color: rgba(30, 30, 46, 0.95); /* base color with slight transparency */
+    color: @text;
+}
+
+/* search entry */
+entry {
+    background-color: rgba(49, 50, 68, 0.8); /* surface0 with transparency */
+    color: @text;
+    border-radius: 25px;
+    padding: 5px;
+}
+
+button, image {
+    border-radius: 20px;
+    background: none;
+    border: none;
+    color: @text;
+}
+
+button:hover {
+    background-color: rgba(67, 72, 102, 0.5); /* overlay1 with transparency */
+    color: @flamingo;
+}
+
+/* in case you wanted to give category buttons a different look */
+#category-button {
+    margin: 0 10px 0 10px;
+    background-color: @mantle;
+    border-width: 0;
+    color: @text;
+    border-radius: 20px;
+    padding: 3px 8px;
+}
+
+#category-button:hover {
+    background-color: @surface1;
+    color: @yellow;
+}
+
+#pinned-box {
+    padding-bottom: 5px;
+    border-bottom: 1px dotted @overlay1;
+    color: @subtext0;
+}
+
+#files-box {
+    padding: 5px;
+    border: 1px dotted @overlay0;
+    border-radius: 15px;
+    background-color: rgba(70, 72, 102, 0.3); /* overlay1 with transparency */
+    color: @text;
+}
+
+/* math operation result label */
+#math-label {
+    font-weight: bold;
+    font-size: 16px;
+    color: @pink;
+}
+

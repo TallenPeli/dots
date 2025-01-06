@@ -1,0 +1,212 @@
+// -*- mode: jsonc -*-
+{
+    "position": "top",
+    "spacing": 3,
+    "margin": 1,
+
+    "modules-left": [
+        "group/search",
+        "group/workspace_pill",
+        "hyprland/window"
+    ],
+
+    "modules-center": [ 
+        "clock"
+    ],
+
+    "modules-right": [ 
+        "tray",
+        "power-profiles-daemon", 
+        "group/drawer"
+    ],
+
+    "group/search": { 
+        "orientation": "inherit",
+        "modules": [
+            "custom/fuzzel",
+            "custom/search_text"
+        ]
+    },
+"group/drawer": {
+        "on-click": "swaync-client -t",
+        "orientation": "inherit",
+        "modules": [
+            "bluetooth",
+            "network",
+            "pulseaudio",
+            "battery"
+        ]
+    },
+
+    "group/workspace_pill": {
+        "orientation": "inherit",
+        "modules": [
+            "hyprland/workspaces"
+        ]
+    },
+
+    "group/settings": {
+        "orientation": "inherit",
+        "drawer": {
+            "transition-duration": 100,
+            "transition-left-to-right": false
+        },
+        "modules": [
+            "custom/settingscog",
+            "custom/hyprsettings",
+            "custom/waybarsettings"
+        ]
+    },
+
+    "hyprland/workspaces": {
+        "format-default": ""
+    },
+
+    "custom/settingscog": {
+        "format": "󰢻",
+        "tooltip": false
+    },
+
+    "custom/hyprsettings": {
+        "on-click": "kitty nvim $HOME/.config/hypr/",
+        "format": "󰙀",
+        "tooltip-format": "Hyprland Settings"
+    },
+
+    "custom/waybarsettings": {
+        "on-click": "kitty nvim $HOME/.config/waybar/",
+        "format": "",
+        "tooltip-format": "Waybar Settings"
+    },
+
+    "bluetooth": {
+        "on-click": "swaync-client -t",
+        "format": "",
+        "format-connected": "󰂱",
+        "format-disabled": "󰂲",
+        "tooltip": true,
+        "tooltip-format": "Device Controller : {status}\nDevice Address: {controller_address}\nConnected Devices : {num_connections}\n\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias} : {device_address}",
+        "tooltip-format-enumerate-connected-battery": "{device_alias} {device_battery_percentage}% : {device_address}",
+        "format-icons": ["[#....]", "[##...]", "[###..]", "[####.]", "[#####]"]
+    },
+
+    "custom/fuzzel": {
+        "format": "",
+        "tooltip": false,
+        "on-click": "fuzzel"
+    },
+
+    "custom/search_text": {
+        "format": " Search",
+        "on-click": "fuzzel",
+        "tooltip": false
+    },
+
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "󰛐",
+            "deactivated": "󰛑"
+        }
+    },
+
+    "tray": {
+        "icon-size": 20,
+        "spacing": 10
+    },
+
+    "clock": {
+        "interval": 1,
+        "format": "{:%b %d %I:%M %p}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "{:%m-%d-%Y}"
+    },
+
+    "cpu": {
+        "format": "{usage}% ",
+        "on-click": "kitty btop",
+        "tooltip": false
+    },
+
+    "temperature": {
+        "critical-threshold": 80,
+        "format": "{temperatureC}°C ",
+        "format-critical": "{temperatureC}°C "
+    },
+
+    "backlight": {
+        "format": "{percent}% 󰛨",
+        "tooltip": true,
+        "tooltip-format": "{percent}% Backlight Brightness"
+    },
+
+    "battery": {
+        "on-click": "swaync-client -t",
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾","󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+        "format-charging": "󰂄 {capacity}%"
+    },
+
+    "power-profiles-daemon": {
+        "format": "{icon}",
+        "tooltip": true,
+        "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+        "format-icons": {
+            "default": "Default",
+            "performance": "󱐋",
+            "balanced": "",
+            "power-saver": "󰌪"
+        }
+    },
+
+    "network": {
+        "on-click": "swaync-client -t",
+        "format-wifi": "{icon}",
+        "format-ethernet": "{ipaddr}/{cidr}",
+        "tooltip-format": "{ifname} via {gwaddr}",
+        "format-linked": "{ifname} (No IP)",
+        "format-disconnected": "󰤮",
+	      "on-click-right": "kitty nmtui",
+        "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"]
+    },
+
+    "pulseaudio": {
+        "on-click": "swaync-client -t",
+        "format": "{icon}",
+        "format-bluetooth": "{icon}",
+        "format-bluetooth-muted": " {icon} ",
+        "tooltip-format": "{volume}%",
+        "format-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "headset": "",
+            "phone": "󰏲",
+            "portable": "",
+            "car": "󰞬",
+	          "default": ["","",""]
+        }
+    },
+
+    "custom/waymedia": {
+        "exec": "$HOME/.config/waybar/waymedia",
+        "interval": 1,
+        "limit": 60,
+        "on-click": "playerctl play-pause",
+        "on-scroll-up": "playerctl next",
+        "on-scroll-down": "playerctl previous",
+        "pause-icon": " ",
+        "play-icon": " ",
+        "divider": " - "
+    },
+
+    "custom/power": {
+        "format" : "",
+	      "tooltip": false,
+        "on-click": "$HOME/.config/hypr/scripts/fuzzel-power.sh"
+    }
+}
